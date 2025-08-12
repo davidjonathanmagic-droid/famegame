@@ -1,62 +1,45 @@
 import Seo from "@/components/Seo";
-import PointerGlow from "@/components/PointerGlow";
-import heroImage from "@/assets/flash-celeb-quest-hero.jpg";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { useState } from "react";
+import { Card, CardContent } from "@/components/ui/card";
+import img from "@/assets/celeb-base.png";
 
 const Z3U5Bl8tAnswer = () => {
-  const [revealed, setRevealed] = useState(false);
-  const celebrityName = revealed ? "A. Starling" : "Hidden";
-
   return (
     <>
       <Seo
-        title="Celebrity Flash Quiz – Answer"
-        description="Answer reveal for Celebrity Flash Quiz. Uncover the star."
+        title="Celebrity Quiz – Answer"
+        description="The answer reveal for Celebrity Quiz."
         canonicalPath="/Z3U5Bl8t"
-        image={heroImage}
+        image={img}
         structuredData={{
           "@context": "https://schema.org",
           "@type": "WebPage",
-          name: "Celebrity Flash Quiz – Answer",
-          description: "Answer page for a flash celebrity question.",
+          name: "Celebrity Quiz – Answer",
+          description: "Answer reveal for the celebrity quiz.",
         }}
       />
 
       <header className="sr-only">
-        <h1>Celebrity Flash Quiz – Answer</h1>
+        <h1>Celebrity Quiz – Answer</h1>
       </header>
 
-      <main className="min-h-screen bg-gradient-hero">
-        <PointerGlow className="w-full">
-          <section className="container py-16 grid place-items-center">
-            <Card className="card-glass border rounded-lg max-w-2xl w-full">
-              <CardHeader>
-                <CardTitle className="text-2xl">Answer</CardTitle>
-              </CardHeader>
-              <CardContent className="grid md:grid-cols-2 gap-6 items-center">
-                <div>
-                  <img
-                    src={heroImage}
-                    alt="Blurred celebrity hint"
-                    loading="lazy"
-                    className={`w-full h-auto rounded-md transition ${revealed ? 'blur-0' : 'blur-sm'}`}
-                  />
-                </div>
-                <div className="space-y-4">
-                  <p className="text-sm text-muted-foreground">Tap to reveal the correct answer.</p>
-                  <Button variant="hero" onClick={() => setRevealed((v) => !v)}>
-                    {revealed ? 'Hide Answer' : 'Reveal Answer'}
-                  </Button>
-                  <div className="text-lg">
-                    Revealed: <span className="font-semibold">{celebrityName}</span>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          </section>
-        </PointerGlow>
+      <main className="min-h-screen bg-gradient-hero grid place-items-center py-16">
+        <section className="container grid place-items-center">
+          <Card className="max-w-md w-full border rounded-xl">
+            <CardContent className="p-8 text-center space-y-4">
+              <h2 className="text-3xl font-bold text-primary">Celebrity Quiz</h2>
+              <p className="text-sm text-muted-foreground">The answer is:</p>
+              <div className="flex justify-center">
+                <img
+                  src={img}
+                  alt="Celebrity: Ryan Reynolds"
+                  loading="lazy"
+                  className="w-40 h-40 rounded-full object-cover ring-4 ring-primary/30 p-1 bg-background"
+                />
+              </div>
+              <p className="text-xl font-bold">Ryan Reynolds</p>
+            </CardContent>
+          </Card>
+        </section>
       </main>
     </>
   );

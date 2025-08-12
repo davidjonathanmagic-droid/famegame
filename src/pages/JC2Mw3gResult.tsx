@@ -1,65 +1,45 @@
 import Seo from "@/components/Seo";
-import PointerGlow from "@/components/PointerGlow";
-import heroImage from "@/assets/flash-celeb-quest-hero.jpg";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { useState } from "react";
+import { Card, CardContent } from "@/components/ui/card";
+import img from "@/assets/celeb-39.png";
 
 const JC2Mw3gResult = () => {
-  const [score, setScore] = useState(() => Math.floor(6 + Math.random() * 5));
-  const [total] = useState(10);
-
-  const reroll = () => setScore(Math.floor(6 + Math.random() * 5));
-
   return (
     <>
       <Seo
-        title="Celebrity Flash Quiz 39 – Result"
-        description="Your results for Celebrity Flash Quiz 39. See how you scored!"
+        title="Celebrity Quiz – Answer"
+        description="The answer reveal for Celebrity Quiz 39."
         canonicalPath="/JC2Mw3g"
-        image={heroImage}
+        image={img}
         structuredData={{
           "@context": "https://schema.org",
           "@type": "WebPage",
-          name: "Celebrity Flash Quiz 39 – Result",
-          description: "Results summary for the celebrity flash quiz.",
+          name: "Celebrity Quiz – Answer",
+          description: "Answer reveal for the celebrity quiz.",
         }}
       />
 
       <header className="sr-only">
-        <h1>Celebrity Flash Quiz 39 – Result</h1>
+        <h1>Celebrity Quiz – Answer</h1>
       </header>
 
-      <main className="min-h-screen bg-gradient-hero">
-        <PointerGlow className="w-full">
-          <section className="container py-16 grid place-items-center">
-            <Card className="card-glass border rounded-lg max-w-xl w-full">
-              <CardHeader>
-                <CardTitle className="text-2xl">Your Result</CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-6">
-                <div className="flex items-center gap-6">
-                  <img
-                    src={heroImage}
-                    alt="Result background motif"
-                    loading="lazy"
-                    className="w-36 h-24 object-cover rounded-md"
-                  />
-                  <div>
-                    <p className="text-4xl font-bold">
-                      {score} <span className="text-muted-foreground text-lg">/ {total}</span>
-                    </p>
-                    <p className="text-muted-foreground">Nice work! Try different rounds to improve.</p>
-                  </div>
-                </div>
-                <div className="flex gap-3">
-                  <Button variant="hero" onClick={reroll}>Reroll Score</Button>
-                  <Button variant="outline" onClick={() => window.location.reload()}>Reset Page</Button>
-                </div>
-              </CardContent>
-            </Card>
-          </section>
-        </PointerGlow>
+      <main className="min-h-screen bg-gradient-hero grid place-items-center py-16">
+        <section className="container grid place-items-center">
+          <Card className="max-w-md w-full border rounded-xl">
+            <CardContent className="p-8 text-center space-y-4">
+              <h2 className="text-3xl font-bold text-primary">Celebrity Quiz</h2>
+              <p className="text-sm text-muted-foreground">The answer is:</p>
+              <div className="flex justify-center">
+                <img
+                  src={img}
+                  alt="Celebrity: Jennifer Aniston"
+                  loading="lazy"
+                  className="w-40 h-40 rounded-full object-cover ring-4 ring-primary/30 p-1 bg-background"
+                />
+              </div>
+              <p className="text-xl font-bold">Jennifer Aniston</p>
+            </CardContent>
+          </Card>
+        </section>
       </main>
     </>
   );

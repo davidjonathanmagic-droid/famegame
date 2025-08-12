@@ -1,90 +1,45 @@
 import Seo from "@/components/Seo";
-import PointerGlow from "@/components/PointerGlow";
-import heroImage from "@/assets/flash-celeb-quest-hero.jpg";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
-import { Progress } from "@/components/ui/progress";
-import { useEffect, useMemo, useState } from "react";
-
-const TOTAL_TIME = 20;
+import { Card, CardContent } from "@/components/ui/card";
+import img from "@/assets/celeb-59.png";
 
 const TC6Kl3xQuiz = () => {
-  const [guess, setGuess] = useState("");
-  const [timeLeft, setTimeLeft] = useState(TOTAL_TIME);
-  const [submitted, setSubmitted] = useState<string | null>(null);
-
-  useEffect(() => {
-    if (timeLeft <= 0 || submitted) return;
-    const t = setInterval(() => setTimeLeft((s) => s - 1), 1000);
-    return () => clearInterval(t);
-  }, [timeLeft, submitted]);
-
-  const pct = useMemo(() => (timeLeft / TOTAL_TIME) * 100, [timeLeft]);
-
-  const onSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!guess.trim()) return;
-    setSubmitted(guess.trim());
-  };
-
   return (
     <>
       <Seo
-        title="Celebrity Flash Quiz 59 – Quiz"
-        description="Play the Celebrity Flash Quiz 59. Guess the star before time runs out!"
+        title="Celebrity Quiz – Answer"
+        description="The answer reveal for Celebrity Quiz 59."
         canonicalPath="/TC6Kl3x"
-        image={heroImage}
+        image={img}
         structuredData={{
           "@context": "https://schema.org",
           "@type": "WebPage",
-          name: "Celebrity Flash Quiz 59 – Quiz",
-          description: "Fast, fun celebrity guessing challenge.",
+          name: "Celebrity Quiz – Answer",
+          description: "Answer reveal for the celebrity quiz.",
         }}
       />
 
       <header className="sr-only">
-        <h1>Celebrity Flash Quiz 59 – Quiz</h1>
+        <h1>Celebrity Quiz – Answer</h1>
       </header>
 
-      <main className="min-h-screen bg-gradient-hero">
-        <PointerGlow className="w-full">
-          <section className="container py-16">
-            <Card className="card-glass border rounded-lg">
-              <CardHeader>
-                <CardTitle className="text-2xl">Guess the Celebrity</CardTitle>
-              </CardHeader>
-              <CardContent className="grid md:grid-cols-2 gap-6 items-center">
-                <div className="order-2 md:order-1 space-y-4">
-                  <Progress value={pct} className="w-full" aria-label="Time left" />
-                  <p className="text-sm text-muted-foreground">Time left: {timeLeft}s</p>
-                  <form onSubmit={onSubmit} className="flex gap-2">
-                    <Input
-                      value={guess}
-                      onChange={(e) => setGuess(e.target.value)}
-                      placeholder="Type your guess..."
-                      aria-label="Your guess"
-                    />
-                    <Button type="submit" variant="hero">Submit</Button>
-                  </form>
-                  {submitted && (
-                    <div className="text-sm">
-                      Your guess: <span className="font-medium">{submitted}</span>
-                    </div>
-                  )}
-                </div>
-                <div className="order-1 md:order-2">
-                  <img
-                    src={heroImage}
-                    alt="Stylized celebrity collage for the quiz"
-                    loading="lazy"
-                    className="w-full h-auto rounded-md"
-                  />
-                </div>
-              </CardContent>
-            </Card>
-          </section>
-        </PointerGlow>
+      <main className="min-h-screen bg-gradient-hero grid place-items-center py-16">
+        <section className="container grid place-items-center">
+          <Card className="max-w-md w-full border rounded-xl">
+            <CardContent className="p-8 text-center space-y-4">
+              <h2 className="text-3xl font-bold text-primary">Celebrity Quiz</h2>
+              <p className="text-sm text-muted-foreground">The answer is:</p>
+              <div className="flex justify-center">
+                <img
+                  src={img}
+                  alt="Celebrity: Jennifer Lopez"
+                  loading="lazy"
+                  className="w-40 h-40 rounded-full object-cover ring-4 ring-primary/30 p-1 bg-background"
+                />
+              </div>
+              <p className="text-xl font-bold">Jennifer Lopez</p>
+            </CardContent>
+          </Card>
+        </section>
       </main>
     </>
   );
