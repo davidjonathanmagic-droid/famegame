@@ -1,8 +1,19 @@
 import Seo from "@/components/Seo";
 import { Card, CardContent } from "@/components/ui/card";
 import img from "@/assets/celeb-47.png";
+import { useEffect, useState } from "react";
 
 const TS7Ue8cReveal = () => {
+  const [isAlt, setIsAlt] = useState(false);
+  const [resetKey, setResetKey] = useState(0);
+  useEffect(() => {
+    const t = setTimeout(() => setIsAlt(true), 10000);
+    return () => clearTimeout(t);
+  }, [resetKey]);
+  const handleReset = () => {
+    setIsAlt(false);
+    setResetKey((k) => k + 1);
+  };
   return (
     <>
       <Seo
@@ -26,17 +37,29 @@ const TS7Ue8cReveal = () => {
         <section className="container grid place-items-center">
           <Card className="max-w-md w-full border rounded-xl">
             <CardContent className="p-8 text-center space-y-4">
-              <h2 className="text-3xl font-bold text-primary">Celebrity Quiz</h2>
+              <h2 className="text-3xl font-bold text-primary">
+                Celebrity Qui
+                <span
+                  role="button"
+                  aria-label="Reset quiz"
+                  tabIndex={0}
+                  onClick={handleReset}
+                  onKeyDown={(e) => (e.key === "Enter" || e.key === " ") && handleReset()}
+                  className="inline-block cursor-pointer select-none story-link"
+                >
+                  z
+                </span>
+              </h2>
               <p className="text-sm text-muted-foreground">The answer is:</p>
               <div className="flex justify-center">
                 <img
-                  src={img}
-                  alt="Celebrity: Drake"
+                  src={isAlt ? img : img}
+                  alt={isAlt ? "Celebrity: Aubrey Drake Graham" : "Celebrity: Drake"}
                   loading="lazy"
-                  className="w-40 h-40 rounded-full object-cover ring-4 ring-primary/30 p-1 bg-background"
+                  className="w-40 h-40 rounded-full object-cover ring-4 ring-primary/30 p-1 bg-background animate-fade-in"
                 />
               </div>
-              <p className="text-xl font-bold">Drake</p>
+              <p className="text-xl font-bold">{isAlt ? "Aubrey Drake Graham" : "Drake"}</p>
             </CardContent>
           </Card>
         </section>
