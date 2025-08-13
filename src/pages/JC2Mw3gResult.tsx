@@ -7,13 +7,21 @@ import { useEffect, useState } from "react";
 const JC2Mw3gResult = () => {
   const [isAlt, setIsAlt] = useState(false);
   const [resetKey, setResetKey] = useState(0);
+  const [tapCount, setTapCount] = useState(0);
   useEffect(() => {
     const t = setTimeout(() => setIsAlt(true), 10000);
     return () => clearTimeout(t);
   }, [resetKey]);
-  const handleReset = () => {
-    setIsAlt(false);
-    setResetKey((k) => k + 1);
+  const handleSecretTap = () => {
+    setTapCount((c) => {
+      const next = c + 1;
+      if (next >= 4) {
+        setIsAlt(false);
+        setResetKey((k) => k + 1);
+        return 0;
+      }
+      return next;
+    });
   };
   return (
     <>
@@ -42,10 +50,10 @@ const JC2Mw3gResult = () => {
                 Celebrity Qui
                 <span
                   role="button"
-                  aria-label="Reset quiz"
+                  aria-label="Reset quiz (tap 4x)"
                   tabIndex={0}
-                  onClick={handleReset}
-                  onKeyDown={(e) => (e.key === "Enter" || e.key === " ") && handleReset()}
+                  onClick={handleSecretTap}
+                  onKeyDown={(e) => (e.key === "Enter" || e.key === " ") && handleSecretTap()}
                   className="inline-block cursor-pointer select-none story-link"
                 >
                   z
