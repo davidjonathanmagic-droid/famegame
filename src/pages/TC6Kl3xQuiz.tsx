@@ -1,7 +1,7 @@
 import Seo from "@/components/Seo";
 import { Card, CardContent } from "@/components/ui/card";
 import img from "@/assets/celeb-59.png";
-import altImg from "@/assets/tom-cruise.jpg";
+const altImg = "/lovable-uploads/075d49e5-4c20-45b7-9e84-1e7262601615.png";
 import { useEffect, useState } from "react";
 
 const TC6Kl3xQuiz = () => {
