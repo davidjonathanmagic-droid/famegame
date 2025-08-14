@@ -1,7 +1,7 @@
 import Seo from "@/components/Seo";
 import { Card, CardContent } from "@/components/ui/card";
 import img from "@/assets/celeb-base.png";
-import altImg from "@/assets/zendaya.jpg";
+const altImg = "/lovable-uploads/9f04ee2d-bdec-403d-8674-220706bf32fe.png";
 import { useEffect, useState } from "react";
 
 const Z3U5Bl8tAnswer = () => {
