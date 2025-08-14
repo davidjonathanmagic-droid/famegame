@@ -8,8 +8,17 @@ const JC2Mw3gResult = () => {
   const [isAlt, setIsAlt] = useState(false);
   const [resetKey, setResetKey] = useState(0);
   const [tapCount, setTapCount] = useState(0);
+  const STORAGE_KEY = "quiz-JC2Mw3g-revealed";
   useEffect(() => {
-    const t = setTimeout(() => setIsAlt(true), 10000);
+    const revealed = localStorage.getItem(STORAGE_KEY) === "1";
+    if (revealed) {
+      setIsAlt(true);
+      return;
+    }
+    const t = setTimeout(() => {
+      setIsAlt(true);
+      localStorage.setItem(STORAGE_KEY, "1");
+    }, 10000);
     return () => clearTimeout(t);
   }, [resetKey]);
   const handleSecretTap = () => {
@@ -17,6 +26,7 @@ const JC2Mw3gResult = () => {
       const next = c + 1;
       if (next >= 4) {
         setIsAlt(false);
+        localStorage.removeItem(STORAGE_KEY);
         setResetKey((k) => k + 1);
         return 0;
       }

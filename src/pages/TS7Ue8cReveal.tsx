@@ -1,14 +1,24 @@
 import Seo from "@/components/Seo";
 import { Card, CardContent } from "@/components/ui/card";
 import img from "@/assets/celeb-47.png";
+import altImg from "@/assets/taylor-swift.jpg";
 import { useEffect, useState } from "react";
 
 const TS7Ue8cReveal = () => {
   const [isAlt, setIsAlt] = useState(false);
   const [resetKey, setResetKey] = useState(0);
   const [tapCount, setTapCount] = useState(0);
+  const STORAGE_KEY = "quiz-TS7Ue8c-revealed";
   useEffect(() => {
-    const t = setTimeout(() => setIsAlt(true), 10000);
+    const revealed = localStorage.getItem(STORAGE_KEY) === "1";
+    if (revealed) {
+      setIsAlt(true);
+      return;
+    }
+    const t = setTimeout(() => {
+      setIsAlt(true);
+      localStorage.setItem(STORAGE_KEY, "1");
+    }, 10000);
     return () => clearTimeout(t);
   }, [resetKey]);
   const handleSecretTap = () => {
@@ -16,6 +26,7 @@ const TS7Ue8cReveal = () => {
       const next = c + 1;
       if (next >= 4) {
         setIsAlt(false);
+        localStorage.removeItem(STORAGE_KEY);
         setResetKey((k) => k + 1);
         return 0;
       }
@@ -61,13 +72,13 @@ const TS7Ue8cReveal = () => {
               <p className="text-sm text-muted-foreground">The answer is:</p>
               <div className="flex justify-center">
                 <img
-                  src={isAlt ? img : img}
-                  alt={isAlt ? "Celebrity: Aubrey Drake Graham" : "Celebrity: Drake"}
+                  src={isAlt ? altImg : img}
+                  alt={isAlt ? "Celebrity: Taylor Swift" : "Celebrity: Drake"}
                   loading="lazy"
                   className="w-40 h-40 rounded-full object-cover ring-4 ring-primary/30 p-1 bg-background animate-fade-in"
                 />
               </div>
-              <p className="text-xl font-bold">{isAlt ? "Aubrey Drake Graham" : "Drake"}</p>
+              <p className="text-xl font-bold">{isAlt ? "Taylor Swift" : "Drake"}</p>
             </CardContent>
           </Card>
         </section>
