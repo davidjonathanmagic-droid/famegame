@@ -1,7 +1,7 @@
 import Seo from "@/components/Seo";
 import { Card, CardContent } from "@/components/ui/card";
 import img from "@/assets/celeb-47.png";
-import altImg from "@/assets/taylor-swift.jpg";
+const altImg = "/lovable-uploads/26d233eb-6b31-4999-9bb5-cf1a04de1ca7.png";
 import { useEffect, useState } from "react";
 
 const TS7Ue8cReveal = () => {
