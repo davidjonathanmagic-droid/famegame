@@ -37,7 +37,7 @@ const Index = () => {
 
           <div className="space-y-4 max-w-2xl mx-auto">
             <h2 className="text-2xl md:text-3xl font-bold">
-              🌟 Think You Know Your Celebs?
+              🌟 Think You Know Your Celebs? 🎬
             </h2>
             <p className="text-lg md:text-xl text-muted-foreground">
               Put your star knowledge to the test in the ultimate celebrity trivia game. Quick rounds, endless fun!
