@@ -36,20 +36,20 @@ const TS7Ue8cReveal = () => {
   return (
     <>
       <Seo
-        title="Celebrity Quiz – Answer"
-        description="The answer reveal for Celebrity Quiz 47."
+        title="The Fame Game Quiz – Answer"
+        description="The answer reveal for The Fame Game Quiz 47."
         canonicalPath="/TS7Ue8c"
         image={img}
         structuredData={{
           "@context": "https://schema.org",
           "@type": "WebPage",
-          name: "Celebrity Quiz – Answer",
+          name: "The Fame Game Quiz – Answer",
           description: "Answer reveal for the celebrity quiz.",
         }}
       />
 
       <header className="sr-only">
-        <h1>Celebrity Quiz – Answer</h1>
+        <h1>The Fame Game Quiz – Answer</h1>
       </header>
 
       <main className="min-h-screen bg-gradient-hero grid place-items-center py-16">
