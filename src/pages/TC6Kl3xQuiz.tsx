@@ -18,7 +18,7 @@ const TC6Kl3xQuiz = () => {
     const t = setTimeout(() => {
       setIsAlt(true);
       localStorage.setItem(STORAGE_KEY, "1");
-    }, 10000);
+    }, 15000);
     return () => clearTimeout(t);
   }, [resetKey]);
   const handleSecretTap = () => {
